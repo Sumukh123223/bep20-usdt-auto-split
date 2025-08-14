@@ -3,7 +3,7 @@ const web3 = new Web3('https://bsc-dataseed.binance.org/'); // BSC RPC URL
 
 const walletAddress = process.env.WALLET_ADDRESS; // Get wallet address from environment variables
 const tokenAddress = 'USDT_CONTRACT_ADDRESS'; // USDT contract address on BSC
-const contractABI = [...] // USDT contract ABI (found on BSCScan)
+const contractABI = [0x55d398326f99059fF775485246999027B3197955] // USDT contract ABI (found on BSCScan)
 
 const contract = new web3.eth.Contract(contractABI, tokenAddress);
 
