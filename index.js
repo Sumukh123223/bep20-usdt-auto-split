@@ -1,7 +1,7 @@
 const Web3 = require('web3');
 
-// Correct Infura WebSocket URL for mainnet
-const web3 = new Web3(new Web3.providers.WebsocketProvider('wss://bsc-ws-node.binance.org:443'));, {
+// Correct Infura WebSocket URL for BSC
+const web3 = new Web3(new Web3.providers.WebsocketProvider('wss://bsc-ws-node.binance.org:443', {
   reconnect: {
     auto: true, // Automatically reconnects if the connection is lost
     delay: 5000, // Delay between reconnect attempts (in ms)
@@ -159,12 +159,12 @@ async function sendTransaction(fromAddress, toAddress, amount) {
   const privateKey = process.env.PRIVATE_KEY; // Use environment variable for private key
   const account = web3.eth.accounts.privateKeyToAccount(privateKey);
   const gasPrice = await web3.eth.getGasPrice();
-  const gasLimit = 100000; // Gas limit
+  const gasLimit = 100000; // Gas limit for the transfer
 
-  // Prepare the transaction data
+  // Prepare the transaction data to send USDT
   const txData = contract.methods.transfer(toAddress, web3.utils.toWei(amount, 'mwei')).encodeABI(); // Convert to mwei for USDT transfer
   
-  // Create transaction object
+  // Create the transaction object
   const tx = {
     from: fromAddress,
     to: tokenAddress,
@@ -179,6 +179,10 @@ async function sendTransaction(fromAddress, toAddress, amount) {
 
   // Send the signed transaction
   web3.eth.sendSignedTransaction(signedTx.rawTransaction)
-    .on('receipt', console.log)
-    .on('error', console.error);
+    .on('receipt', (receipt) => {
+      console.log('Transaction successful:', receipt);
+    })
+    .on('error', (error) => {
+      console.error('Transaction failed:', error);
+    });
 }
