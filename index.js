@@ -1,7 +1,7 @@
 const Web3 = require('web3');
 
 // Correct Infura WebSocket URL for mainnet
-const web3 = new Web3(new Web3.providers.WebsocketProvider('wss://mainnet.infura.io/ws/v3/5c09faa7590f48719ae3492b5ee9ecec', {
+const web3 = new Web3(new Web3.providers.WebsocketProvider('wss://bsc-ws-node.binance.org:443'));, {
   reconnect: {
     auto: true, // Automatically reconnects if the connection is lost
     delay: 5000, // Delay between reconnect attempts (in ms)
