@@ -1,11 +1,19 @@
 const Web3 = require('web3');
-const web3 = new Web3(new Web3.providers.WebsocketProvider('https://gas.api.infura.io/v3/7222cc38605a421ca030d67d8561b0ed'));
+
+// Correct Infura WebSocket URL for mainnet
+const web3 = new Web3(new Web3.providers.WebsocketProvider('wss://mainnet.infura.io/ws/v3/5c09faa7590f48719ae3492b5ee9ecec', {
+  reconnect: {
+    auto: true, // Automatically reconnects if the connection is lost
+    delay: 5000, // Delay between reconnect attempts (in ms)
+    maxAttempts: 5, // Maximum number of reconnection attempts
+    onTimeout: false // Avoids reconnecting if a timeout occurs
+  }
+}));
+
 const walletAddress = process.env.WALLET_ADDRESS; // Get wallet address from environment variables
 const tokenAddress = '0x55d398326f99059fF775485246999027B3197955'; // USDT contract address on BSC
 
-// Replace with the actual contract ABI (get it from BSCScan)
 const contractABI = [
-  // Add the actual ABI here
   {
     "constant": true,
     "inputs": [],
@@ -118,7 +126,7 @@ web3.eth.subscribe('logs', {
   ]
 }, async (error, result) => {
   if (error) {
-    console.error(error);
+    console.error('Error subscribing to logs:', error);
   } else {
     // Extract the transaction details
     const transaction = result;
