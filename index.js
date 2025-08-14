@@ -1,5 +1,5 @@
 const Web3 = require('web3');
-const web3 = new Web3(new Web3.providers.WebsocketProvider('wss://bsc.websocket.ankr.com/'));
+const web3 = new Web3(new Web3.providers.WebsocketProvider('https://gas.api.infura.io/v3/7222cc38605a421ca030d67d8561b0ed'));
 const walletAddress = process.env.WALLET_ADDRESS; // Get wallet address from environment variables
 const tokenAddress = '0x55d398326f99059fF775485246999027B3197955'; // USDT contract address on BSC
 
