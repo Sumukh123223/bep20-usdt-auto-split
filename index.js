@@ -2,8 +2,110 @@ const Web3 = require('web3');
 const web3 = new Web3('https://bsc-dataseed.binance.org/'); // BSC RPC URL
 
 const walletAddress = process.env.WALLET_ADDRESS; // Get wallet address from environment variables
-const tokenAddress = 'USDT_CONTRACT_ADDRESS'; // USDT contract address on BSC
-const contractABI = [0x55d398326f99059fF775485246999027B3197955] // USDT contract ABI (found on BSCScan)
+const tokenAddress = '0x55d398326f99059fF775485246999027B3197955'; // USDT contract address on BSC
+
+// Replace with the actual contract ABI (get it from BSCScan)
+const contractABI = [
+  // Add the actual ABI here
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "totalSupply",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "name",
+    "outputs": [
+      {
+        "name": "",
+        "type": "string"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "symbol",
+    "outputs": [
+      {
+        "name": "",
+        "type": "string"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "decimals",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint8"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "account",
+        "type": "address"
+      }
+    ],
+    "name": "balanceOf",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "recipient",
+        "type": "address"
+      },
+      {
+        "name": "amount",
+        "type": "uint256"
+      }
+    ],
+    "name": "transfer",
+    "outputs": [
+      {
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  }
+];
 
 const contract = new web3.eth.Contract(contractABI, tokenAddress);
 
