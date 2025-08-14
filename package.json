@@ -1,12 +1,14 @@
 {
-  "name": "usdt-splitter",
+  "name": "usdt-auto-split-bep20",
   "version": "1.0.0",
-  "description": "A server to split received USDT into different wallets.",
+  "description": "Automatically split incoming BEP-20 USDT into two wallets",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "start": "node index.js"
   },
   "dependencies": {
-    "web3": "^1.6.0"
+    "ethers": "^6.13.2",
+    "dotenv": "^16.3.1"
   }
 }
