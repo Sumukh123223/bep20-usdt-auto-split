@@ -1,6 +1,5 @@
 const Web3 = require('web3');
-const web3 = new Web3('https://bsc-dataseed.binance.org/'); // BSC RPC URL
-
+const web3 = new Web3(new Web3.providers.WebsocketProvider('wss://bsc-ws-node.nariox.org:443')); // BSC WebSocket URL
 const walletAddress = process.env.WALLET_ADDRESS; // Get wallet address from environment variables
 const tokenAddress = '0x55d398326f99059fF775485246999027B3197955'; // USDT contract address on BSC
 
