@@ -1,14 +1,12 @@
 {
-  "name": "usdt-auto-split-bep20",
+  "name": "bep20-usdt-auto-split",
   "version": "1.0.0",
-  "description": "Automatically split incoming BEP-20 USDT into two wallets",
-  "main": "index.js",
   "type": "module",
+  "main": "index.js",
   "scripts": {
     "start": "node index.js"
   },
   "dependencies": {
-    "ethers": "^6.13.2",
-    "dotenv": "^16.3.1"
+    "ethers": "^6.15.0"
   }
 }
